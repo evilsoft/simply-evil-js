@@ -19,7 +19,7 @@ module.exports = function(karma) {
     webpack: {
       module:{
         loaders: [
-          { test: /\.js$/, exclude: /node_modules/, loader: 'babel' },
+          { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel' },
           { test: /\.coffee$/, exclude: /node_modules/, loader: 'coffee' }
         ]
       }
