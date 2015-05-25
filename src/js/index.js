@@ -8,7 +8,7 @@ import App from './app'
 var app = new App();
 
 app.start({
-  debug: true,
-  message: 'Hello simplyEvil',
+  debug:    true,
+  message:  'Hello simplyEvil',
 });
 
