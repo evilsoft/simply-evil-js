@@ -1,16 +1,16 @@
 module.exports = {
   entry: './src/js/index.js',
   output: {
-    path: './site/js',
+    path:     './site/js',
     filename: 'app.js'
   },
-  debug: true,
-  devtool: 'eval-source-map',
+  debug:    true,
+  devtool:  'inline-source-map',
   module: {
     loaders: [{
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loader: 'babel'
+      test:     /\.jsx?$/,
+      exclude:  /node_modules/,
+      loader:   'babel'
     }]
   }
 }
