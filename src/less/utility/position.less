@@ -1,0 +1,57 @@
+.pos--full-width {
+  left:  0;
+  right: 0;
+}
+
+.pos--full-height {
+  top:    0;
+  bottom: 0;
+}
+
+.abs {
+  position: absolute;
+}
+
+.abs--full-width {
+  .abs;
+  .pos--full-width;
+}
+
+.abs--full-height {
+  .abs;
+  .pos--full-height;
+}
+
+.fix {
+  position: fixed;
+}
+
+.fix--full-width {
+  .fix;
+  .pos--full-width;
+}
+
+.fix--full-height {
+  .fix;
+  .pos--full-height;
+}
+
+.fix--bottom {
+  .fix--full-width;
+  bottom: 0;
+}
+
+.fix--top {
+  .fix--full-width;
+  top: 0;
+}
+
+.fix--left {
+  .fix--full-height;
+  left: 0;
+}
+
+.fix--right {
+  .fix--full-height;
+  right: 0;
+}
