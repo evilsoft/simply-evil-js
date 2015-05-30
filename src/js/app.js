@@ -10,15 +10,15 @@ var mergeOptions = function(...options) {
 };
 
 var renderApp = function() {
-  let {container} = this.options,
-      elem        = document.createElement('h1');
+  let {container} = this.options;
 
-  elem.innerHTML = this.options.message;
-  container.insertBefore(elem, container.childNodes[0]);
+  this.el             = document.createElement('h1');
+  this.el.innerHTML   = this.options.message;
+  container.insertBefore(this.el, container.childNodes[0]);
+  return this;
 };
 
 class Application {
-
   constructor(options={}) {
     this.options = mergeOptions(options);
   }
@@ -29,7 +29,17 @@ class Application {
 
     if(this.options.debug)
       console.log('Application started with\n', this.options)
+
+    return this;
   }
+
+  stop() {
+    if(this.el)
+      this.el.parentNode.removeChild(this.el);
+
+    return this;
+  }
+
 }
 
 export default Application;

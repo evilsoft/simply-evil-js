@@ -7,5 +7,10 @@ html
     meta(name="description" content="")
     link(rel="stylesheet" href="css/app.css")
     title simplyEvil
-    script(src="js/app.js" defer)
+    script(src="js/app.js")
   body
+    script.
+      EvilApp.start({
+        container: document.body,
+        debug: true
+      });

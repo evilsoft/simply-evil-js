@@ -7,8 +7,24 @@ import App from './app'
 
 var app = new App();
 
-app.start({
-  debug:    true,
-  message:  'Hello simplyEvil',
-});
+var startApp = function(options) {
+  stopApp();
 
+  app = new App(options);
+
+  app.start({
+    message:  'Hello simplyEvil',
+  });
+};
+
+var stopApp = function() {
+  if(app && typeof app.stop === 'function') {
+    app.stop();
+    app = null;
+  }
+};
+
+export default {
+  start: startApp,
+  stop: stopApp
+};

@@ -1,9 +1,7 @@
 App = appRequire './app.js'
 
 describe 'Application', ->
-
   describe 'options', ->
-
     describe 'defaults', ->
       beforeEach ->
         @app = new App
