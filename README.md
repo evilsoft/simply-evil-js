@@ -83,7 +83,7 @@ This is the main command used in development. This command does the following:
 * Set up watches on your source directory and trigger rebuilds with changes.
 * Start up the development web server (note: if some files are not not found on the initial load, just refresh the browser, there is a race condition I am dealing with there :cry:).
 
-This command can be stopped in the terminal with a simple `Ctrl+c`. There is a browser-sync web interface for tweaking the synchronization between browsers. It is available at `http://localhost:3030`. Read up on the browser-sync docs for all the fun you can have with it. 
+This command can be stopped in the terminal with a simple `Ctrl+c`. There is a browser-sync web interface for tweaking the synchronization between browsers. It is available at `http://localhost:3030`. Read up on the browser-sync docs for all the fun you can have with it.
 
 ### `$ npm run build`
 This is the command to run when you are releasing your awesome into the universe. It provides production ready assets for tagging on the githubs. It does a lot like the `npm start` command but in different ways, and it does not start a development server. It goes like this:
@@ -100,8 +100,6 @@ This is the test command that should be used by your Continuous Integration/Depl
 When working with your specs this can be run in a terminal separate from the terminal you are running `npm start` in. This will build all of your specs and run them in the console using [phantomjs](http://phantomjs.org/). There is a nice console reporter that looks like the reporter used for mocha. Also you can open as many browsers as you like to: `http://localhost:9876` and every time your specs rerun in the console, they will also rerun in the browsers. This is **GREAT** for cross browser testing. Have all target browsers open and you will get instant feedback when cross browser issues arise. I even point my mobile devices to that port through my wireless network to get mobile tested as well.
 
 Another neat thing about the html runner, is the ability to use the jasmine html reporter that most of you are probably acclimated to for spec debugging. Either click the button in the top-right corner of the karma reporter in your browser or just navigate to `http:/localhost:9876/debug.html`. I choose the version that does not do live reload, as it tends to get in my way when I am debugging my specs.
-
-As a sidetone, some of the more savvy people may have noticed that I have the karma npm package is locked at version `0.12.31`. There is a breaking change that is affecting some of the reporters in version `0.12.32`....***YEAH I KNOW***, a breaking change on a ***PATCH*** version. To make it worse, the version used through npm is not in lock step with the version on github...creating all kinds of dependency issues right now. Once this is resolved, gonna go back to bringing in with a `~0.12.31`.
 
 This basically does the following:
 
