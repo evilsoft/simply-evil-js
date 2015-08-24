@@ -1,0 +1,14 @@
+.grid-row(@gutter: @grid--gutter) {
+  .spacing-horz(@gutter);
+  display: flex;
+}
+
+.grid-col(@span: 1, @columns: @grid--maxCols) {
+  flex: 0 0 (@span / @columns * 100%);
+}
+
+.generate-cols(@n, @i: 1) when (@i =< @n) {
+  .col--@{i} { .grid-col(@i); }
+
+  .generate-cols(@n, (@i + 1));
+}
