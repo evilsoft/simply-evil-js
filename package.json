@@ -5,8 +5,8 @@
   "scripts": {
     "build:js": "mkdir -p dist/js && webpack -p --config webpack.config.build --colors --progress",
     "watch:js": "mkdir -p site/js && webpack --watch --colors --progress",
-    "build:css": "mkdir -p dist/css && lessc --clean-css='--s0' src/less/main.less dist/css/app.css",
-    "watch:css": "mkdir -p site/css && watch 'lessc src/less/main.less site/css/app.css' src/less/ -du",
+    "build:css": "mkdir -p dist/css && lessc --clean-css='--s0' --autoprefix='last 2 versions' src/less/main.less dist/css/app.css",
+    "watch:css": "mkdir -p site/css && watch 'lessc src/less/main.less site/css/app.css --autoprefix=\"last 2 versions\"' src/less/ -du",
     "build:html": "mkdir -p dist/ && jade src/pages -o dist/",
     "watch:html": "mkdir -p site/ && jade -w src/pages -o site/",
     "clean:build": "rm -Rf dist/",
@@ -39,6 +39,7 @@
     "karma-phantomjs-launcher": "^0.2.1",
     "karma-webpack": "^1.5.1",
     "less": "^2.5.0",
+    "less-plugin-autoprefix": "^1.4.2",
     "less-plugin-clean-css": "^1.5.0",
     "node-libs-browser": "^0.5.2",
     "parallelshell": "^2.0.0",
