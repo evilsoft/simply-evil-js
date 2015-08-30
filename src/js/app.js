@@ -1,10 +1,9 @@
 var defaultOptions = {
   debug:      false,
   container:  document.body,
-  message:    'Hello Nothing!!',
+  message:    'Hello Nothing!!'
 };
 
-// Some helpers to get the party started
 var mergeOptions = function(...options) {
   return Object.assign({}, defaultOptions, ...options);
 };
@@ -15,6 +14,7 @@ var renderApp = function() {
   this.el             = document.createElement('h1');
   this.el.innerHTML   = this.options.message;
   container.insertBefore(this.el, container.childNodes[0]);
+
   return this;
 };
 
@@ -39,7 +39,6 @@ class Application {
 
     return this;
   }
-
 }
 
 export default Application;

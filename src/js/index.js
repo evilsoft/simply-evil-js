@@ -12,9 +12,7 @@ var startApp = function(options) {
 
   app = new App(options);
 
-  app.start({
-    message:  'Hello simplyEvil',
-  });
+  app.start();
 };
 
 var stopApp = function() {

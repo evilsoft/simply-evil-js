@@ -1,0 +1,14 @@
+.spacing(@vert, @horz: @vert) {
+  .spacing--vert(@vert);
+  .spacing--horz(@horz);
+}
+
+.spacing--vert(@top: 0, @bottom: @top) {
+  padding-top:    @top;
+  padding-bottom: @bottom;
+}
+
+.spacing--horz(@left: 0, @right: @left) {
+  padding-left:   @left;
+  padding-right:  @right;
+}

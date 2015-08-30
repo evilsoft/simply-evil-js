@@ -1,5 +1,5 @@
 .grid-row(@gutter: @grid--gutter) {
-  .spacing-horz(@gutter);
+  .spacing--horz(@gutter);
   display: flex;
 }
 
@@ -9,6 +9,5 @@
 
 .generate-cols(@n, @i: 1) when (@i =< @n) {
   .col--@{i} { .grid-col(@i); }
-
   .generate-cols(@n, (@i + 1));
 }

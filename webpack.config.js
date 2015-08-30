@@ -1,10 +1,10 @@
 module.exports = {
   entry: './src/js/index.js',
   output: {
-    path:     './site/js',
-    filename: 'app.js',
-    library: "EvilApp",
-    libraryTarget: "umd",
+    path:           './site/js',
+    filename:       'app.js',
+    library:        'EvilApp',
+    libraryTarget:  'umd'
   },
   debug:    true,
   devtool:  'inline-source-map',
