@@ -2,9 +2,12 @@ App = appRequire './app.js'
 
 describe 'Application', ->
   describe 'options', ->
+    beforeEach ->
+      @app = new App
+
     describe 'defaults', ->
       beforeEach ->
-        @app = new App
+        @app.start()
 
       it 'sets debug to false', ->
         expect(@app.options.debug).toBeFalse()
@@ -17,47 +20,23 @@ describe 'Application', ->
 
     describe 'option setting', ->
       beforeEach ->
-        @app = new App
-          debug:      true
-          container:  @targetElem
-          message:    'Madness'
-          foo:        'bar'
-          app:        true
+        spyOn(console, 'log') #STFU
 
-      describe 'on construction', ->
+        @elm = document.createElement('h1')
+        @app.start
+          debug:      true
+          message:    'Using start'
+          container:  @elm
+
+      describe 'debug option is true', ->
         it 'sets debug to true', ->
           expect(@app.options.debug).toBeTrue()
 
-        it 'sets container to target fixture', ->
-          expect(@app.options.container).toBe @targetElem
+        it 'sets debug true', ->
+          expect(console.log).toHaveBeenCalled()
 
-        it 'sets message to Maddness', ->
-          expect(@app.options.message).toEqual 'Madness'
+      it 'overrides message to Using start', ->
+        expect(@app.options.message).toEqual 'Using start'
 
-        it 'sets foo to bar', ->
-          expect(@app.options.foo).toEqual 'bar'
-
-        it 'sets app to true', ->
-          expect(@app.options.app).toBeTrue()
-
-      describe 'on start', ->
-        beforeEach ->
-          @app.start
-            debug:      false
-            message:    'Using start'
-            foo:        'baz'
-
-        it 'overrides debug to false', ->
-          expect(@app.options.debug).toBeFalse()
-
-        it 'keeps container to target fixture', ->
-          expect(@app.options.container).toBe @targetElem
-
-        it 'overrides message to Using start', ->
-          expect(@app.options.message).toEqual 'Using start'
-
-        it 'overrides foo to baz', ->
-          expect(@app.options.foo).toEqual 'baz'
-
-        it 'keeps app as true', ->
-          expect(@app.options.app).toBeTrue()
+      it 'sets the container to a specified html element', ->
+        expect(@app.options.container).toBe @elm

@@ -1,28 +1,21 @@
 // this needs to stay here, do not remove.
-import 'babel-core/polyfill'
+import 'babel-core/polyfill';
 
 // everything down from here can be removed for your
 // own application and standup
-import App from './app'
+import App from './app';
 
-var app = new App();
+const app = new App();
+const api = { start, stop };
 
-var startApp = function(options) {
-  stopApp();
-
-  app = new App(options);
-
-  app.start();
+function start(options={}) {
+  stop();
+  app.start(options);
 };
 
-var stopApp = function() {
-  if(app && typeof app.stop === 'function') {
-    app.stop();
-    app = null;
-  }
+function stop() {
+  // A place to clean anything up
+  app.stop();
 };
 
-export default {
-  start: startApp,
-  stop: stopApp
-};
+export default api;

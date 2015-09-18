@@ -1,15 +1,15 @@
-var defaultOptions = {
+const defaultOptions = {
   debug:      false,
   container:  document.body,
   message:    'Hello Nothing!!'
 };
 
-var mergeOptions = function(...options) {
+function mergeOptions(...options) {
   return Object.assign({}, defaultOptions, ...options);
 };
 
-var renderApp = function() {
-  let {container} = this.options;
+function renderApp() {
+  let { container } = this.options;
 
   this.el             = document.createElement('h1');
   this.el.innerHTML   = this.options.message;
@@ -19,12 +19,9 @@ var renderApp = function() {
 };
 
 class Application {
-  constructor(options={}) {
-    this.options = mergeOptions(options);
-  }
-
   start(options={}) {
-    this.options = mergeOptions(this.options, options);
+    this.options = mergeOptions(options);
+
     renderApp.apply(this);
 
     if(this.options.debug)
@@ -34,8 +31,9 @@ class Application {
   }
 
   stop() {
-    if(this.el)
-      this.el.parentNode.removeChild(this.el);
+    let { el } = this;
+
+    if(el) el.parentNode.removeChild(el);
 
     return this;
   }
