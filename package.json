@@ -44,6 +44,7 @@
     "node-libs-browser": "^0.5.2",
     "parallelshell": "^2.0.0",
     "phantomjs-polyfill": "0.0.1",
+    "phantomjs": ">=1.9",
     "watch": "^0.16.0",
     "webpack": "^1.9.8"
   },
