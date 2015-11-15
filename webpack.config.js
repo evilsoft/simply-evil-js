@@ -1,18 +1,8 @@
-module.exports = {
-  entry: './src/js/index.js',
-  output: {
-    path:           './site/js',
-    filename:       'app.js',
-    library:        'EvilApp',
-    libraryTarget:  'umd'
-  },
-  debug:    true,
-  devtool:  'inline-source-map',
-  module: {
-    loaders: [{
-      test:     /\.jsx?$/,
-      exclude:  /node_modules/,
-      loader:   'babel?presets[]=es2015'
-    }]
-  }
-}
+var buildConfig = require('./webpack.config.build')
+
+buildConfig.output.path = './site/js'
+
+buildConfig.debug   =  true
+buildConfig.devtool =  'inline-source-map'
+
+module.exports = buildConfig
