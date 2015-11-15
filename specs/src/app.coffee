@@ -1,4 +1,4 @@
-App = appRequire './app.js'
+App = appRequire('./app.js').default
 
 describe 'Application', ->
   describe 'options', ->
