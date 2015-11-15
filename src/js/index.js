@@ -1,5 +1,5 @@
 // this needs to stay here, do not remove.
-import 'babel-core/polyfill';
+import 'babel-polyfill';
 
 // everything down from here can be removed for your
 // own application and standup
@@ -18,4 +18,4 @@ function stop() {
   app.stop();
 };
 
-export default api;
+module.exports = api;
