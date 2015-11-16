@@ -13,14 +13,12 @@ module.exports = function(karma) {
     ],
     preprocessors: {
       'specs/**/*.js': ['webpack'],
-      'specs/**/*.coffee': ['webpack'],
       'specs/helpers/fixtures/**/*.html': ['html2js'],
     },
     webpack: {
       module:{
         loaders: [
           { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel?presets[]=es2015' },
-          { test: /\.coffee$/, exclude: /node_modules/, loader: 'coffee' }
         ]
       }
     },
