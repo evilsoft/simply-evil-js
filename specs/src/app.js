@@ -5,7 +5,7 @@ describe('Application', function() {
   let app, elem
 
   beforeEach(function() {
-    app = new App()
+    app = App()
   })
 
   describe('options', function() {

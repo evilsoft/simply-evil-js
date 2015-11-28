@@ -1,21 +1,20 @@
 // this needs to stay here, do not remove.
-import 'babel-polyfill';
+import 'babel-polyfill'
 
 // everything down from here can be removed for your
 // own application and standup
-import App from './app';
+import App from './app'
 
-const app = new App();
-const api = { start, stop };
+const app = App()
 
 function start(options={}) {
-  stop();
-  app.start(options);
-};
+  stop()
+  app.start(options)
+}
 
 function stop() {
   // A place to clean anything up
-  app.stop();
-};
+  app.stop()
+}
 
-module.exports = api;
+module.exports = { start, stop }

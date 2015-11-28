@@ -1,6 +1,6 @@
 {
   "name": "simply-evil-js",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Just a simple npm based build system starter template",
   "author": "Ian Hofmann-Hicks (evil)",
   "repository": "https://github.com/evilsoft/simply-evil-js",
@@ -22,10 +22,10 @@
     "start": "npm run clean:dev && parallelshell 'npm run watch:js' 'npm run watch:html' 'npm run watch:css' 'npm run serve'"
   },
   "devDependencies": {
-    "babel-core": "^6.1.21",
+    "babel-core": "^6.2.4",
     "babel-loader": "^6.1.0",
-    "babel-polyfill": "^6.1.19",
-    "babel-preset-es2015": "^6.1.18",
+    "babel-polyfill": "^6.2.4",
+    "babel-preset-es2015": "^6.2.4",
     "browser-sync": "^2.7.3",
     "jade": "^1.9.2",
     "jasmine-core": "^2.3.4",
