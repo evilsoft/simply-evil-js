@@ -1,0 +1,18 @@
+.breakpoint(@size, @rules) {
+  @media only screen and (min-width: @size) { @rules(); }
+}
+.breakpoint-sml(@rules) {
+  .breakpoint(@break-sml, @rules);
+}
+
+.breakpoint-med(@rules) {
+  .breakpoint(@break-med, @rules);
+}
+
+.breakpoint-lrg(@rules) {
+  .breakpoint(@break-lrg, @rules);
+}
+
+.breakpoint-xlg(@rules) {
+  .breakpoint(@break-xlg, @rules);
+}
