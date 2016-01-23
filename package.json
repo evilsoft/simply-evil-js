@@ -8,19 +8,17 @@
   "scripts": {
     "preversion": "npm test",
     "build:js": "mkdir -p dist/js && webpack -p --config webpack.config.build --colors --progress",
-    "watch:js": "mkdir -p site/js && webpack --watch --colors --progress",
     "build:css": "mkdir -p dist/css && lessc --clean-css='--s0' --autoprefix='last 2 versions' src/less/main.less dist/css/app.css",
-    "watch:css": "mkdir -p site/css && watch 'lessc src/less/main.less site/css/app.css --autoprefix=\"last 2 versions\"' src/less/ -du",
-    "build:html": "mkdir -p dist/ && jade src/pages -o dist/",
-    "watch:html": "mkdir -p site/ && jade -w src/pages -o site/",
-    "clean:build": "rm -Rf dist/",
-    "clean:dev": "rm -Rf site/",
-    "clean": "npm run clean:build && npm run clean:dev",
-    "build": "npm run clean:build && npm run build:html && npm run build:js && npm run build:css",
+    "watch:css": "watch 'lessc src/less/main.less dev/app.css --autoprefix=\"last 2 versions\"' src/less/ -du",
+    "build:html": "jade src/pages -o dist/",
+    "watch:html": "jade -w src/pages -o dev/",
+    "prebuild": "rm -Rf dist/",
+    "build": "npm run build:html && npm run build:js && npm run build:css",
     "specs": "node_modules/karma/bin/karma start",
     "serve": "browser-sync start --config bs.config.js",
     "test": "npm run specs -- --single-run --reporters dots",
-    "start": "npm run clean:dev && parallelshell 'npm run watch:js' 'npm run watch:html' 'npm run watch:css' 'npm run serve'"
+    "prestart": "rm -Rf dev/",
+    "start": "parallelshell 'webpack' 'npm run watch:html' 'npm run watch:css' 'npm run serve'"
   },
   "devDependencies": {
     "babel-core": "^6.2.4",
@@ -47,7 +45,8 @@
     "phantomjs": ">=1.9",
     "phantomjs-polyfill": "0.0.1",
     "watch": "^0.16.0",
-    "webpack": "^1.9.8"
+    "webpack": "^1.9.8",
+    "webpack-merge": "^0.7.3"
   },
   "dependencies": {
     "lodash": "^3.9.1"
