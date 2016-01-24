@@ -32,7 +32,7 @@ This will compile everything (html, js and css) and start a browser-sync instanc
 http://localhost:1337
 ```
 
-The start command will also set up watches on the source files for: html, css and javascript. What that means is that when you edit a file in the `./src/` directory, the appropriate asset (html, css or js) will be recompiled and because of [browser-sync](http://www.browsersync.io/) the browser you are developing in will reload with the new changes.
+The start command will also set up watches on the source files for: html, css and javascript. What that means is that when you edit a file in the `dev/` directory, the appropriate asset (html, css or js) will be recompiled and because of [browser-sync](http://www.browsersync.io/) the browser you are developing in will reload with the new changes.
 
 Finally, this repo also includes a test suite. It may be run for continuous deployment for options like [jenkins](https://jenkins-ci.org/) or [travis](https://travis-ci.org/) that need unformatted utf-8 strings) just by running the command:
 
@@ -56,7 +56,7 @@ To debug your specs, I have included [karma-jasmine-html-reporter](https://www.n
 ```
 http://localhost:9876/debug.html
 ```
-The jasmine web reporter will not live reload (personal choice for debugging), so you will need to refresh during the debugging process.
+The jasmine web reporter will not live reload, so you will need to refresh during the debugging process.
 
 In addition to the html runner/reporter , it uses headless [phantom-js](http://phantomjs.org/) in the terminal with a nice, mocha-like output. Any file that is either a spec or a file that is referenced by a spec is changed, the suite will be ran again, showing the results of your change. Like anything else, this can be stopped by hitting `Ctrl+c`.
 
@@ -75,11 +75,11 @@ In this simple build system, we are using npm to synchronize the build process (
 ### `$ npm start`
 This is the main command used in development. This command does the following:
 
-* Clean out any old bits inside of the `site/` folder.
-* Ensure that the `site/` folder exists.
-* Build all assets and deposit the results in their respective folders in `site/`.
+* Clean out any old bits inside of the `dev/` folder.
+* Ensure that the `dev/` folder exists.
+* Build all assets and deposit the results in their respective folders in `dev/`.
 * Set up watches on your source directory and trigger rebuilds with changes.
-* Start up the development web server (note: if some files are not not found on the initial load, just refresh the browser, there is a race condition I am dealing with there :cry:).
+* Start up the development web server.
 
 This command can be stopped in the terminal with a simple `Ctrl+c`. There is a browser-sync web interface for tweaking the synchronization between browsers. It is available at `http://localhost:3030`. Read up on the browser-sync docs for all the fun you can have with it.
 
@@ -88,8 +88,7 @@ This is the command to run when you are releasing your awesome into the universe
 
 * Clean out any old bits inside of the `dist/` folder.
 * Ensure that the `dist/` folder exists.
-* Build all assets and deposit the results in their respective folders in `dist/`. These assets will be stripped of any dead code paths, uglified and minified. The only thing I do not do is provide gzip versions. I feel that is a concern of the server, and not something I should lock people into.
-* Exit super gracefully.
+* Build all assets and deposit the results in `dist/`. These assets will be stripped of any dead code paths, uglified and minified.
 
 ### `$ npm test`
 This is the test command that should be used by your Continuous Integration/Deployment platform. This will basically run your entire test suite with unformatted utf-8 encoding in the browser and return either pass or fail with some debug information. Typically, you will want to use the development spec runner when working with specs. This is just there for CI purposes.
