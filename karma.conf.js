@@ -19,6 +19,7 @@ module.exports = function(karma) {
       module:{
         loaders: [
           { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel?presets[]=es2015' },
+          { test: /\.less$/, loader: 'css!less' },
         ]
       }
     },
