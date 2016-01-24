@@ -56,3 +56,12 @@ if(target === 'start') {
     output:   { path: paths.dev }
   })
 }
+
+if(target === 'build') {
+  module.exports = merge(common, {
+    output: { path: paths.dist },
+    plugins: [
+      new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
+    ]
+  })
+}
