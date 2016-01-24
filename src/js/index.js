@@ -5,6 +5,8 @@ import 'babel-polyfill'
 // own application and standup
 import App from './app'
 
+import '../less/main.less'
+
 const app = App()
 
 function start(options={}) {

@@ -2,6 +2,8 @@ var merge     = require('webpack-merge')
 var webpack   = require('webpack')
 var path      = require('path')
 
+var LessPluginAutoPrefix = require('less-plugin-autoprefix')
+
 var target = process.env.npm_lifecycle_event
 
 var paths = {
@@ -18,6 +20,9 @@ var common = {
     library:        'EvilApp',
     libraryTarget:  'umd'
   },
+  resolve: {
+    extensions: ['', '.js', '.less']
+  },
   module: {
     loaders: [
       {
@@ -28,7 +33,17 @@ var common = {
           cacheDirectory: true,
           presets: [ 'es2015' ]
         }
+      },
+      {
+        test: /.less$/,
+        include:  paths.src,
+        loader: 'style!css!less'
       }
+    ]
+  },
+  lessLoader: {
+    lessPlugins: [
+      new LessPluginAutoPrefix({ browsers: [ 'last 2 versions' ] })
     ]
   }
 }
