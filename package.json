@@ -7,7 +7,7 @@
   "license": "ISC",
   "scripts": {
     "preversion": "npm test",
-    "html": "jade src/pages -o dev -w",
+    "html": "pug src/pages -o dev -w",
     "serve": "browser-sync start --config bs.config.js",
     "specs": "node_modules/karma/bin/karma start",
     "test": "npm run specs -- --single-run --reporters dots",
@@ -24,7 +24,6 @@
     "browser-sync": "^2.7.3",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
-    "jade": "^1.9.2",
     "jasmine-core": "^2.3.4",
     "karma": "^0.13.9",
     "karma-fixture": "^0.2.4",
@@ -40,14 +39,15 @@
     "less-plugin-autoprefix": "^1.4.2",
     "node-libs-browser": "^1.0.0",
     "parallelshell": "^2.0.0",
-    "phantomjs-prebuilt": ">=1.9",
     "phantomjs-polyfill": "0.0.2",
+    "phantomjs-prebuilt": ">=1.9",
+    "pug-cli": "^1.0.0-alpha1",
     "style-loader": "^0.13.0",
     "webpack": "^1.9.8",
-    "webpack-merge": "^0.8.3"
+    "webpack-merge": "^0.10.0"
   },
   "dependencies": {
     "lodash": "^4.0.0",
-    "ramda": "^0.20.1"
+    "ramda": "^0.21.0"
   }
 }
