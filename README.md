@@ -12,7 +12,7 @@ or [grunt](http://gruntjs.com/) is a bit heavy. That is where
 $ npm install -g npm
 ```
 
-*you may need to `sudo` this command. If you do, i recommend you look into using something like [OiNutter](https://github.com/OiNutter)'s fabulous [nodenv](https://github.com/OiNutter/nodenv).*
+*you may need to `sudo` this command. If you do, i recommend you look into using something like the fabulous [nodenv](https://github.com/nodenv/nodenv).*
 
 After pulling down this repo, you just need to run the following in the directory where this repo is cloned:
 
