@@ -8,13 +8,14 @@
   "scripts": {
     "preversion": "npm test",
     "html": "pug src/pages -o dev -w",
+    "bundle": "webpack",
     "serve": "browser-sync start --config bs.config.js",
     "specs": "node_modules/karma/bin/karma start",
     "test": "npm run specs -- --single-run --reporters dots",
     "prebuild": "rm -Rf dist && mkdir -p dist",
     "build": "webpack",
     "prestart": "rm -Rf dev && mkdir -p dev",
-    "start": "parallelshell 'webpack' 'npm run html' 'npm run serve'"
+    "start": "npm-run-all --parallel bundle html serve"
   },
   "devDependencies": {
     "babel-core": "^6.2.4",
@@ -38,7 +39,7 @@
     "less-loader": "^2.2.2",
     "less-plugin-autoprefix": "^1.4.2",
     "node-libs-browser": "^1.0.0",
-    "parallelshell": "^2.0.0",
+    "npm-run-all": "^1.8.0",
     "phantomjs-polyfill": "0.0.2",
     "phantomjs-prebuilt": ">=1.9",
     "pug-cli": "^1.0.0-alpha1",

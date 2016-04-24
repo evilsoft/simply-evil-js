@@ -36,7 +36,7 @@ var common = {
   }
 }
 
-if(target === 'start') {
+if(target === 'bundle') {
   module.exports = merge(common, {
     watch:    true,
     debug:    true,
