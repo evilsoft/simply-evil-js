@@ -28,7 +28,7 @@ module.exports = function(karma) {
     },
     reporters: [
       'mocha',
-      'html',
+      'kjhtml',
     ],
     colors: true,
     browsers: ['PhantomJS'],
