@@ -26,7 +26,7 @@
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "jasmine-core": "^2.3.4",
-    "karma": "^0.13.9",
+    "karma": "^1.1.2",
     "karma-fixture": "^0.2.4",
     "karma-html2js-preprocessor": "^1.0.0",
     "karma-jasmine": "^1.0.2",
@@ -45,10 +45,10 @@
     "pug-cli": "^1.0.0-alpha1",
     "style-loader": "^0.13.0",
     "webpack": "^1.9.8",
-    "webpack-merge": "^0.13.0"
+    "webpack-merge": "^0.14.1"
   },
   "dependencies": {
     "lodash": "^4.0.0",
-    "ramda": "^0.21.0"
+    "ramda": "^0.22.1"
   }
 }
