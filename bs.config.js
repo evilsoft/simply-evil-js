@@ -21,7 +21,7 @@ module.exports = {
   },
   open: false,
   browser: "default",
-  notify: true,
+  notify: false,
   scrollProportionally: true,
   reloadDelay: 0,
   reloadDebounce: 0,
