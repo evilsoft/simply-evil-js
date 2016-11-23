@@ -1,4 +1,4 @@
-// this needs to stay here, do not remove.
+// this should stay here.
 import 'babel-polyfill'
 import '../less/main.less'
 
