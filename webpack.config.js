@@ -7,6 +7,12 @@ var LessPluginAutoPrefix  = require('less-plugin-autoprefix')
 
 var target = process.env.npm_lifecycle_event
 
+function lessPlugins() {
+  return [
+    new LessPluginAutoPrefix({ browsers: [ 'last 2 versions' ] })
+  ]
+}
+
 var paths = {
   src:  path.join(__dirname, 'src'),
   dist: path.join(__dirname, 'dist'),
@@ -22,16 +28,17 @@ var common = {
     libraryTarget:  'umd'
   },
   resolve: {
-    extensions: ['', '.js', '.less']
+    extensions: [ '.js', '.less' ]
   },
   module: {
-    loaders: [
-      { test: /\.jsx?$/, include: paths.src, loader: 'babel?cacheDirectory&presets[]=es2015' }
-    ]
-  },
-  lessLoader: {
-    lessPlugins: [
-      new LessPluginAutoPrefix({ browsers: [ 'last 2 versions' ] })
+    rules: [
+      {
+        test: /\.jsx?$/,
+        include: paths.src,
+        use: [
+          { loader: 'babel-loader', options: { cacheDirectory: true, presets: [ 'es2015' ] } }
+        ]
+      }
     ]
   }
 }
@@ -39,12 +46,19 @@ var common = {
 if(target === 'bundle') {
   module.exports = merge(common, {
     watch:    true,
-    debug:    true,
     devtool:  'inline-source-map',
     output:   { path: paths.dev },
     module:   {
-      loaders: [
-        { test: /.less$/, include: paths.src, loader: 'style!css!less' }
+      rules: [
+        {
+          test: /.less$/,
+          include: paths.src,
+          use: [
+            'style-loader',
+            'css-loader',
+            { loader: 'less-loader', options: { plugins: lessPlugins() } }
+          ]
+        }
       ]
     }
   })
@@ -54,12 +68,22 @@ if(target === 'build') {
   module.exports = merge(common, {
     output: { path: paths.dist },
     plugins: [
-      new ExtractTextPlugin('app.css', { allChunks: true }),
+      new ExtractTextPlugin({ filename: 'app.css', allChunks: true }),
       new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
+      new webpack.LoaderOptionsPlugin({ minimize: true })
     ],
     module:   {
-      loaders: [
-        { test: /.less$/, include: paths.src, loader: ExtractTextPlugin.extract("css!less") }
+      rules: [
+        {
+          test: /.less$/,
+          include: paths.src,
+          use: ExtractTextPlugin.extract({
+            use: [
+              'css-loader',
+              { loader: 'less-loader', options: { plugins: lessPlugins() } }
+            ]
+          })
+        }
       ]
     }
   })
