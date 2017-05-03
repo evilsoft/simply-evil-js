@@ -8,12 +8,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "html": "pug src/pages -o dev -w",
-    "bundle": "webpack",
+    "bundle": "webpack-dev-server",
     "serve": "browser-sync start --config bs.config.js",
     "prebuild": "rm -Rf dist && mkdir -p dist",
     "build": "webpack",
     "prestart": "rm -Rf dev && mkdir -p dev",
-    "start": "npm-run-all --parallel bundle html serve"
+    "start": "npm-run-all --parallel html bundle"
   },
   "devDependencies": {
     "babel-core": "^6.2.4",
@@ -21,6 +21,7 @@
     "babel-polyfill": "^6.2.4",
     "babel-preset-es2015": "^6.2.4",
     "browser-sync": "^2.7.3",
+    "browser-sync-webpack-plugin": "^1.1.4",
     "css-loader": "^0.28.0",
     "extract-text-webpack-plugin": "^2.1.0",
     "less": "^2.5.0",
@@ -31,6 +32,7 @@
     "pug-cli": "^1.0.0-alpha1",
     "style-loader": "^0.16.1",
     "webpack": "^2.3.2",
+    "webpack-dev-server": "^2.4.4",
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {

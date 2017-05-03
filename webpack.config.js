@@ -1,9 +1,12 @@
-var merge     = require('webpack-merge')
-var webpack   = require('webpack')
-var path      = require('path')
+var merge = require('webpack-merge')
+var path = require('path')
+var webpack = require('webpack')
 
-var ExtractTextPlugin     = require('extract-text-webpack-plugin')
-var LessPluginAutoPrefix  = require('less-plugin-autoprefix')
+var BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var LessPluginAutoPrefix = require('less-plugin-autoprefix')
+
+var bsConfig = require('./bs.config')
 
 var target = process.env.npm_lifecycle_event
 
@@ -36,7 +39,7 @@ var common = {
         test: /\.jsx?$/,
         include: paths.src,
         use: [
-          { loader: 'babel-loader', options: { cacheDirectory: true, presets: [ 'es2015' ] } }
+          { loader: 'babel-loader', options:{ cacheDirectory: true, presets: [ 'es2015' ] } }
         ]
       }
     ]
@@ -47,7 +50,16 @@ if(target === 'bundle') {
   module.exports = merge(common, {
     watch:    true,
     devtool:  'inline-source-map',
-    output:   { path: paths.dev },
+    devServer: {
+      publicPath: '/',
+      contentBase: paths.dev,
+      port: 3100,
+      hot: true
+    },
+    plugins: [
+      new webpack.HotModuleReplacementPlugin(),
+      new BrowserSyncPlugin(bsConfig, { reload: false })
+    ],
     module:   {
       rules: [
         {

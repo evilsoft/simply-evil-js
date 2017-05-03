@@ -4,10 +4,6 @@ module.exports = {
     weinre: { port: 8080 }
   },
   files: [ "dev/**/*" ],
-  server: {
-    baseDir: 'dev',
-    index: 'index.html'
-  },
   port: 1337,
   middleware: false,
   ghostMode: {
@@ -52,5 +48,6 @@ module.exports = {
     svg:  "img",
     gif:  "img",
     js:   "script"
-  }
+  },
+  proxy: 'http://localhost:3100'
 };
