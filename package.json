@@ -6,7 +6,8 @@
   "repository": "https://github.com/evilsoft/simply-evil-js",
   "license": "ISC",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run lint",
+    "lint": "eslint src/js",
     "html": "pug src/pages -o dev -w",
     "bundle": "webpack-dev-server",
     "serve": "browser-sync start --config bs.config.js",
@@ -23,6 +24,7 @@
     "browser-sync": "^2.7.3",
     "browser-sync-webpack-plugin": "^1.1.4",
     "css-loader": "^0.28.0",
+    "eslint": "^3.19.0",
     "extract-text-webpack-plugin": "^2.1.0",
     "less": "^2.5.0",
     "less-loader": "^4.0.3",
