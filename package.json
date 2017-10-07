@@ -3,9 +3,9 @@
   "version": "2.2.0",
   "description": "Just a simple npm based build system starter template",
   "author": "Ian Hofmann-Hicks (evil)",
-  "repository": "https://github.com/evilsoft/simply-evil-js",
   "license": "ISC",
   "scripts": {
+    "zap": "rm -rf .git && git init && git add . && git commit -m 'Initial Commit'",
     "test": "npm run lint",
     "lint": "eslint src/js",
     "html": "pug src/pages -o dev -w",

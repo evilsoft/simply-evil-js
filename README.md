@@ -6,15 +6,13 @@ or [grunt](http://gruntjs.com/) is a bit heavy. That is where
 ***simplyEvil*** comes in. It gives you all the goodies you need to get started, and is pretty light.
 
 ## Getting started
-***Note:*** *npm verion >= 2.0 is required to use this build system, chances are good you may not have that requirement met. That is okay, just run the following:*
+After pulling down this repo, the git history for the build system resides in the project. To remove the history and start fresh, a `zap` script is included. When you run `zap`, it will remove the git history, set up a new history and commit the initial build system to your new repo. You will need to set up your remote branch yourself. To run this, just run the following inside of your new project directory:
 
 ```
-$ npm install -g npm
+$ npm run zap
 ```
 
-*you may need to `sudo` this command. If you do, i recommend you look into using something like the fabulous [nodenv](https://github.com/nodenv/nodenv).*
-
-After pulling down this repo, you just need to run the following in the directory where this repo is cloned:
+Now that you have made the project your own, it is time to pull down the dependencies. All you need to do, using the package manager of your choosing (`npm` is shown here):
 
 ```
 $ npm install
@@ -62,4 +60,3 @@ This is the command to run when you are releasing your awesome into the universe
 * Clean out any old bits inside of the `dist/` folder.
 * Ensure that the `dist/` folder exists.
 * Build all assets and deposit the results in `dist/`. These assets will be stripped of any dead code paths, uglified and minified.
-
