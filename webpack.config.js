@@ -52,7 +52,7 @@ var common = {
   }
 }
 
-if (target === 'bundle') {
+if(target === 'bundle') {
   module.exports = merge(common, {
     watch:    true,
     devtool:  'inline-source-map',
@@ -82,7 +82,7 @@ if (target === 'bundle') {
   })
 }
 
-if (target === 'build') {
+if(target === 'build') {
   module.exports = merge(common, {
     output: { path: paths.dist },
     plugins: [
